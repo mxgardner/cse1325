@@ -17,12 +17,12 @@ public class Coin{
     }
 
     public double getYear{
-        
+        return year;
     }
 }
 public class Purse {
-
     public static void main(string[] args) {
+        
 
     }
 }
