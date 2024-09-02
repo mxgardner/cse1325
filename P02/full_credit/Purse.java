@@ -45,6 +45,7 @@ public class Purse {
         coins[3] = new Coin(1991, Denomination.Quarter);
         coins[4] = new Coin(2024, Denomination.Dollar);
 
+        System.out.printf("\nCoins in your bag\n-----------\n");
         for (Coin coin : coins) {
             System.out.println("Year: " + coin.getYear() + ", Value: " + coin.getValue());
         }
@@ -67,6 +68,6 @@ public class Purse {
             }
         }
 
-        System.out.printf("Total Value: %.2f Year Range: %d - %d\n", totalValue, minYear, maxYear);
+        System.out.printf("\n\nTotal Value: $ %.2f \nYear Range: %d - %d\n", totalValue, minYear, maxYear);
     }
 }
