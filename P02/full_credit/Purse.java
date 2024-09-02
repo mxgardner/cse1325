@@ -48,5 +48,25 @@ public class Purse {
         for (Coin coin : coins) {
             System.out.println("Year: " + coin.getYear() + ", Value: " + coin.getValue());
         }
+
+        double totalValue = 0;
+
+        for (Coin coin : coins) {
+            totalValue += coin.getValue();
+        }
+
+        int minYear = coins[0].getYear();
+        int maxYear = coins[0].getYear();
+
+        for (Coin coin : coins) {
+            if(coin.getYear() < minYear){
+                minYear = coin.getYear();
+            }
+            if(coin.getYear() > maxYear){
+                maxYear = coin.getYear();
+            }
+        }
+
+        System.out.printf("Total Value: %.2f Year Range: %d - %d\n", totalValue, minYear, maxYear);
     }
 }
