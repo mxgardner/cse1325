@@ -14,6 +14,11 @@ enum Denomination {
     public double getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
+    }
 }
 
 class Coin{
@@ -34,20 +39,25 @@ class Coin{
     public int getYear() {
         return year;
     }
+
+    @Override
+    public String toString() {
+        return year + " " + denomination;
+    }
 }
 public class Purse {
     public static void main(String[] args) {
         Coin[] coins = new Coin[5];
 
-        coins[0] = new Coin(1870, Denomination.Penny);
-        coins[1] = new Coin(0, Denomination.Nickel);
-        coins[2] = new Coin(1216, Denomination.Dime);
-        coins[3] = new Coin(1991, Denomination.Quarter);
-        coins[4] = new Coin(2024, Denomination.Dollar);
+        coins[0] = new Coin(1776, Denomination.Penny);
+        coins[1] = new Coin(1432, Denomination.Nickel);
+        coins[2] = new Coin(1215, Denomination.Dime);
+        coins[3] = new Coin(1989, Denomination.Quarter);
+        coins[4] = new Coin(1442, Denomination.Dollar);
 
         System.out.printf("\nCoins in your bag\n-----------\n");
         for (Coin coin : coins) {
-            System.out.println("Year: " + coin.getYear() + ", Value: " + coin.getValue());
+            System.out.println(coin);
         }
 
         double totalValue = 0;
