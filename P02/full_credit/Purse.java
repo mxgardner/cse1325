@@ -1,34 +1,43 @@
 enum Denomination {
-    Penny(0.01), 
-    Nickel(0.05), 
-    Dime(0.10), 
-    Quarter(0.25), 
-    Dollar(1.00);
-
-    private final double value;
-
-    Denomination(double value) {
-        this.value = value;
-    }
-
-    public double getValue() {
-        return value;
-    }
+    Penny, 
+    Nickel, 
+    Dime, 
+    Quarter, 
+    Dollar
 }
 
 class Coin{
     private Denomination denomination;
     private int year;
+    private double value;
 
     public Coin(int year, Denomination denomination){
         this.year = year;
         this.denomination = denomination;
+        this.value = assignValue(denomination);
 
         // TODO: Add data validation
     }
 
+    private double assignValue(Denomination denomination) {
+        switch (denomination) {
+            case Penny:
+                return 0.01;
+            case Nickel:
+                return 0.05;
+            case Dime:
+                return 0.10;
+            case Quarter:
+                return 0.25;
+            case Dollar:
+                return 1.00;
+            default:
+                return 0.0; 
+        }
+    }
+
     public double getValue() {
-        return denomination.getValue();
+        return value;
     }
 
     public int getYear() {
@@ -45,10 +54,10 @@ public class Purse {
         coins[3] = new Coin(1991, Denomination.Quarter);
         coins[4] = new Coin(2024, Denomination.Dollar);
 
-        System.out.printf("\nCoins in your bag\n-----------\n");
-        for (Coin coin : coins) {
-            System.out.println("Year: " + coin.getYear() + ", Value: " + coin.getValue());
-        }
+        // System.out.printf("\nCoins in your bag\n-----------\n");
+        // for (Coin coin : coins) {
+        //     System.out.println("Year: " + coin.getYear() + ", Value: " + coin.getValue());
+        // }
 
         double totalValue = 0;
 
@@ -68,6 +77,6 @@ public class Purse {
             }
         }
 
-        System.out.printf("\n\nTotal Value: $ %.2f \nYear Range: %d - %d\n", totalValue, minYear, maxYear);
+        System.out.printf("\n\nTotal Value: $ %.2f \nYear Range: %d - %d\n\n", totalValue, minYear, maxYear);
     }
 }
