@@ -2,7 +2,7 @@
 <project name="CSE1325" default="build">
 
   <target name="build" description="Compile source tree java files">
-    <javac includeantruntime="false" debug="true" failonerror="true">
+    <javac includeantruntime="false" debug="true" failonerror="true" source="21" target="21">
       <src path="."/>
     </javac>
   </target>
