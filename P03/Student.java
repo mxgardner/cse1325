@@ -1,10 +1,10 @@
 public class Student{
     private String name;
-    private int id;
+    private long id;
     private String email;
     private Account account;
 
-    public Student(){
+    public Student(String name, long id, String email){
         if (!email.endsWith("@uta.edu") && !email.endsWith("@mavs.uta.edu")) {
             throw new IllegalArgumentException("Non-UTA email address: " + email);
         }
@@ -17,6 +17,10 @@ public class Student{
 
     public String requestMedia(Media media) {
         return account.play(media); 
+    }
+
+    public int getAccountNumber() {
+        return account.getAccountNumber();
     }
 
     @Override
