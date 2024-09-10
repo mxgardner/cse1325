@@ -2,7 +2,7 @@ public class Media {
     private String title;
     private String URL;
 
-    public media (String title, String URL){
+    public Media (String title, String URL){
         this.title = title;
         this.URL = URL;
 
