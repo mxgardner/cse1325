@@ -2,7 +2,7 @@ public class Account {
     private int accountNumber;
     private static int nextAccountNumber = 1;
 
-    public Account() (int accountNumber, int nextAccountNumber){
+    public Account(){
         this.accountNumber = nextAccountNumber++;
         // TODO: Add data validation
     }
