@@ -1,5 +1,16 @@
 public class Media {
-    public static void main (String[] args){
+    private String title;
+    private String URL;
 
+    public media (String title, String URL){
+        this.title = title;
+        this.URL = URL;
+
+        // TODO: Add data validation
+    }
+
+    @Override
+    public String toString() {
+        return "Media [Title: " + title + ", URL: " + URL + "]";
     }
 }
