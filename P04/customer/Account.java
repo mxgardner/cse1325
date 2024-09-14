@@ -1,3 +1,5 @@
+package customer;
+
 public class Account {
     private int accountNumber;
     private static int nextAccountNumber = 1;

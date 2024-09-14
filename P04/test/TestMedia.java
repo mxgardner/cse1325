@@ -1,3 +1,5 @@
+package test;
+
 public class TestMedia {
     public static void main(String[] args) {
         Media media = new Media("Sample Title", "https://example.com");
