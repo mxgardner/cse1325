@@ -1,5 +1,8 @@
 package customer;
 
+import customer.Account; 
+import product.Media;
+
 public class Student{
     private String name;
     private long id;

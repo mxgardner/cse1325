@@ -1,5 +1,9 @@
 package test;
 
+import customer.Student;
+import customer.Account;
+import product.Media;
+
 public class TestStudent {
     public static void main(String[] args) {
         int failures = 0; 
