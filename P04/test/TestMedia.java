@@ -4,6 +4,8 @@ import product.Media;
 
 public class TestMedia {
     public static void main(String[] args) {
+
+        // Test Media Constructor
         Media media = new Media("Sample Title", "https://example.com");
 
         String expected = "Media [Title: Sample Title, URL: https://example.com]";
@@ -14,6 +16,7 @@ public class TestMedia {
             System.exit(1); 
         }
 
+        // Test for valid URLs
         String[] validURLs = {"https://youtube.com", "file://media/lib/garp.mp4"};
         String[] invalidURLs = {"hello.world", "htt://badurl.com", "flub://badurl.com"};
 
@@ -37,6 +40,15 @@ public class TestMedia {
                 System.err.println("FAIL: Expected RuntimeException, but got a different exception for '" + url + "': " + e);
                 System.exit(4); 
             }
+        }
+
+        // Test getPoints function
+        int expectedPoints = 100;
+        int actualPoints = media.getPoints();
+
+        if (actualPoints != expectedPoints) {
+            System.err.println("FAIL: Expected points '" + expectedPoints + "', but got '" + actualPoints + "'");
+            System.exit(2);
         }
         
     }

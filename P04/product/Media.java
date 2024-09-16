@@ -6,7 +6,7 @@ import java.net.URL;
 public class Media {
     private String title;
     private String URL;
-    private int points;
+    private int points = 0;
 
     public Media (String title, String URL, int points){
         this.title = title;
