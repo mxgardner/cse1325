@@ -6,8 +6,9 @@ import java.net.URL;
 public class Media {
     private String title;
     private String URL;
+    private int points;
 
-    public Media (String title, String URL){
+    public Media (String title, String URL, int points){
         this.title = title;
 
         if (!isValidURL(URL)) {
@@ -15,6 +16,7 @@ public class Media {
         }
 
         this.URL = URL;
+        this.points = points;
     }
 
     private boolean isValidURL(String url) {
@@ -26,8 +28,12 @@ public class Media {
         }
     }
 
+    public int getPoints (){
+        return points;
+    }
+
     @Override
     public String toString() {
-        return "Media [Title: " + title + ", URL: " + URL + "]";
+        return "Media [Title: " + title + ", URL: " + URL + " + Customer Points + '' + points]";
     }
 }
