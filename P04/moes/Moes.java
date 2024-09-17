@@ -19,29 +19,18 @@ public class Moes{
         customers.add(student);
     }
     
-    public void getMediaList() {
-        StringBuilder mediaList = new StringBuilder();  
-        for (int i = 0; i < library.size(); i++) {
-            mediaList.append(i)
-                    .append(": ")
-                    .append(library.get(i).toString())
-                    .append("\n");
-        }
+    public ArrayList<Media> getMediaList() {
+        return library;
     }
 
-    public void getStudentList() {
-        StringBuilder studentList = new StringBuilder();  
-        for (int i = 0; i < customers.size(); i++) {
-            studentList.append(i)
-                    .append(": ")
-                    .append(customers.get(i).toString())
-                    .append("\n");
-        }
-    }    
+    public ArrayList<Student> getStudentList() {
+        return customers;
+    }  
 
     public int getPoints(int studentIndex) {
-        Account account = customers.get(studentIndex);
-        
+        Student student = customers.get(studentIndex); 
+        Account account = student.getAccount(); 
+
         if (account instanceof Alacarte) {
             Alacarte alacarteAccount = (Alacarte) account;  // Cast to Alacarte
             return alacarteAccount.getPointsRemaining();
@@ -56,8 +45,9 @@ public class Moes{
 
     // Buy points for the selected student's account
     public String buyPoints(int studentIndex, int points) {
-        Account account = customers.get(studentIndex);
-
+        Student student = customers.get(studentIndex); 
+        Account account = student.getAccount(); 
+        
         // Check if the account is an instance of Alacarte
         if (account instanceof Alacarte) {
             Alacarte alacarteAccount = (Alacarte) account;  // Cast to Alacarte
@@ -78,7 +68,8 @@ public class Moes{
 
      // Play media for the selected student
     public void playMedia(int studentIndex, int mediaIndex) {
-        Account account = customers.get(studentIndex);
+        Student student = customers.get(studentIndex); 
+        Account account = student.getAccount(); 
         Media media = library.get(mediaIndex);
 
         if (account instanceof Alacarte) {
