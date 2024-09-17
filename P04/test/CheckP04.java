@@ -6,6 +6,7 @@ import customer.Unlimited;
 import customer.Student;
 import product.Media;
 import java.util.Scanner;
+import customer.Account;
 
 public class CheckP04{
     public static void main(String[] args){
@@ -19,7 +20,7 @@ public class CheckP04{
         moes.addMedia(media2);
 
         // Add Students
-        Alacarte alacarteAccount = new Alacarte(50); 
+        Alacarte alacarteAccount = new Alacarte(0); 
         Student bigAl = new Student("Al Capone", 1234567891L, "cc7891@uta.edu", false);
         Unlimited unlimitedAccount = new Unlimited(); 
         Student  iNewton = new Student("I. Newton", 314159265, "in7890@uta.edu", true);
@@ -28,34 +29,40 @@ public class CheckP04{
         moes.addStudent(iNewton);
 
         // Buy points
-        System.err.print("Buy how many points for Big Al? ");
+        System.err.printf("\nBuy how many points for Big Al? ");
         int points = sc.nextInt();
         moes.buyPoints(0, points);
 
         // List users
-        System.out.println("MOES Users:");
+        System.out.printf("\nMOES Users:\n");
         for (int i = 0; i < moes.getStudentList().size(); i++) {
             System.out.println(i + ": " + moes.getStudentList().get(i).toString());
         }
 
         // Choose user
-        System.out.print("Which user? ");
+        System.out.printf("\nWhich user? ");
         int userIndex = sc.nextInt();
         System.out.println("Available points: " + moes.getPoints(userIndex));
 
         // List media
-        System.out.println("MOES Media:");
+        System.out.printf("\nMOES Media:\n");
         for (int i = 0; i < moes.getMediaList().size(); i++) {
             System.out.println(i + ": " + moes.getMediaList().get(i).toString());
         }
 
         // Choose media
-        System.out.print("Which media? ");
+        System.out.printf("\nWhich media? ");
         int mediaIndex = sc.nextInt();
-        System.out.println("Points remaining: " + alacarteAccount.getPointsRemaining());
-
-        // Play media
         moes.playMedia(userIndex, mediaIndex);
+
+         // Check and print remaining points for the selected user
+        Account account = moes.getStudentList().get(userIndex).getAccount();
+        if (account instanceof Alacarte) {
+            // Call getPointsRemaining directly on the Alacarte account
+            System.out.println("Points remaining: " + ((Alacarte) account).getPointsRemaining());
+        } else if (account instanceof Unlimited) {
+            System.out.println("Points remaining: " + Integer.MAX_VALUE);
+        }
 
         sc.close();
     }

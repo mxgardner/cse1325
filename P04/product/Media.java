@@ -34,5 +34,5 @@ public class Media {
 
     @Override
     public String toString() {
-        return "Media [Title: " + title + ", URL: " + URL + ", Customer Points: " + points + "]";    }
+        return "Media [Title: " + title + ", URL: " + URL + ", Points: " + points + "]";    }
 }

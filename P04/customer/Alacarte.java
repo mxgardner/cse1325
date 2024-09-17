@@ -18,14 +18,15 @@ public class Alacarte extends Account {
     }
 
     @Override
-    public String play(Media media){
-        int pointsRequired = 100;
+public String play(Media media) {
+    int pointsRequired = media.getPoints();;
 
-        if(pointsRemaining >= pointsRequired){
-            return "Playing " + media.toString();
-        }
-        else{
-            return "Uh oh, You need more points! This media requires " + pointsRequired + ". You have " + pointsRemaining + ".";
-        }
+    // Check if the user has enough points to play the media
+    if (pointsRemaining >= pointsRequired) {
+        pointsRemaining -= pointsRequired;  // Deduct points after playing the media
+        return "Playing " + media.toString() + ". You have " + pointsRemaining + " points remaining.";
+    } else {
+        return "Uh oh, You need more points! This media requires " + pointsRequired + " points. You have " + pointsRemaining + " points.";
     }
+}
 }
