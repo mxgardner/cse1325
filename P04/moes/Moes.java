@@ -5,6 +5,7 @@ import product.Media;
 import customer.Alacarte;
 import customer.Student;
 import customer.Unlimited;
+import customer.Account;
 
 public class Moes{
     private ArrayList<Media> library = new ArrayList<>(); 
@@ -25,15 +26,15 @@ public class Moes{
     }
 
     public void addStudent(Student student) {
-        customers.add(Student);
+        customers.add(student);
     }
 
     public void getStudentList() {
         StringBuilder studentList = new StringBuilder();  
-        for (int i = 0; i < student.size(); i++) {
+        for (int i = 0; i < customers.size(); i++) {
             studentList.append(i)
                     .append(": ")
-                    .append(student.get(i).toString())
+                    .append(customers.get(i).toString())
                     .append("\n");
         }
     }    
