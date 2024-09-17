@@ -52,4 +52,32 @@ public class Moes{
 
         throw new UnsupportedOperationException("Unknown subclass of Account");
     }
+
+    // Buy points for the selected student's account
+    public String buyPoints(int studentIndex, int points) {
+        Account account = customers.get(studentIndex);
+
+        // Check if the account is an instance of Alacarte
+        if (account instanceof Alacarte) {
+            Alacarte alacarteAccount = (Alacarte) account;  // Cast to Alacarte
+            alacarteAccount.buyPoints(points);
+            return "Student now has " + alacarteAccount.getPointsRemaining() + " points.";
+        }
+
+        // Check if the account is an instance of Unlimited
+        if (account instanceof Unlimited) {
+            return "Student has an unlimited account and needs no additional points.";
+        }
+
+        // Throw exception for any other subclass
+        throw new UnsupportedOperationException("Unknown subclass of Account");
+    }
+
+    // Play media for the selected student
+    public String playMedia(int studentIndex, int mediaIndex) {
+        Student student = customers.get(studentIndex);
+        Media media = library.get(mediaIndex);
+        return student.play(media); 
+    }
+
 }
