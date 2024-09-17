@@ -14,6 +14,10 @@ public class Moes{
     public void addMedia(Media media) {
         library.add(media);
     }
+
+    public void addStudent(Student student) {
+        customers.add(student);
+    }
     
     public void getMediaList() {
         StringBuilder mediaList = new StringBuilder();  
@@ -23,10 +27,6 @@ public class Moes{
                     .append(library.get(i).toString())
                     .append("\n");
         }
-    }
-
-    public void addStudent(Student student) {
-        customers.add(student);
     }
 
     public void getStudentList() {
@@ -66,19 +66,30 @@ public class Moes{
         }
 
         // Check if the account is an instance of Unlimited
-        if (account instanceof Unlimited) {
+        else if (account instanceof Unlimited) {
             return "Student has an unlimited account and needs no additional points.";
         }
 
         // Throw exception for any other subclass
+        else {
         throw new UnsupportedOperationException("Unknown subclass of Account");
+        }
     }
 
-    // Play media for the selected student
-    public String playMedia(int studentIndex, int mediaIndex) {
-        Student student = customers.get(studentIndex);
+     // Play media for the selected student
+    public void playMedia(int studentIndex, int mediaIndex) {
+        Account account = customers.get(studentIndex);
         Media media = library.get(mediaIndex);
-        return student.play(media); 
+
+        if (account instanceof Alacarte) {
+            Alacarte alacarteAccount = (Alacarte) account;
+            System.out.println(alacarteAccount.play(media));  // Calls Alacarte's play method
+        } else if (account instanceof Unlimited) {
+            Unlimited unlimitedAccount = (Unlimited) account;
+            System.out.println(unlimitedAccount.play(media));  // Calls Unlimited's play method
+        } else {
+            throw new UnsupportedOperationException("Unknown subclass of Account.");
+        }
     }
 
 }
