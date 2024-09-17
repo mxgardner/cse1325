@@ -13,7 +13,7 @@ public class Moes{
     }
     
     public void getMediaList() {
-        StringBuilder mediaList = new StringBuilder();  // StringBuilder for better performance
+        StringBuilder mediaList = new StringBuilder();  
         for (int i = 0; i < library.size(); i++) {
             mediaList.append(i)
                     .append(": ")
@@ -21,4 +21,18 @@ public class Moes{
                     .append("\n");
         }
     }
+
+    public void addStudent(Student student) {
+        customers.add(Student);
+    }
+
+    public void getStudentList() {
+        StringBuilder studentList = new StringBuilder();  
+        for (int i = 0; i < student.size(); i++) {
+            studentList.append(i)
+                    .append(": ")
+                    .append(student.get(i).toString())
+                    .append("\n");
+        }
+    }    
 }
