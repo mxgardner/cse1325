@@ -3,6 +3,7 @@ package test;
 import customer.Student;
 import customer.Account;
 import product.Media;
+import customer.Unlimited;
 
 public class TestStudent {
     public static void main(String[] args) {
@@ -74,6 +75,23 @@ public class TestStudent {
         } catch (Exception e) {
             System.err.println("FAIL: Unexpected exception in Test 4: " + e.getMessage());
             failures |= 0b100;
+        }
+
+        // Test Unlimited account playing without point restriction
+        try {
+            Media media = new Media("Unlimited Media", "https://example.com/unlimited", 0);
+            Unlimited unlimitedAccount = new Unlimited();  
+
+            String expectedPlayResult = "Playing Media [Title: Unlimited Media, URL: https://example.com/unlimited, Customer Points: 0]";
+            String actualPlayResult = unlimitedAccount.play(media); 
+
+            if (!actualPlayResult.equals(expectedPlayResult)) {
+                System.err.println("FAIL: Expected play result for Unlimited account '" + expectedPlayResult + "', but got '" + actualPlayResult + "'");
+                failures |= 0b1000;
+            }
+        } catch (Exception e) {
+            System.err.println("FAIL: Unexpected exception in Test 5: " + e.getMessage());
+            failures |= 0b1000;
         }
     }
 }
