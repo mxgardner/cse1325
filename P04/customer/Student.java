@@ -1,35 +1,46 @@
 package customer;
 
-import customer.Account; 
 import product.Media;
 
-public class Student{
+public class Student extends Account {
     private String name;
     private long id;
     private String email;
-    private Account account;
+    private Alacarte alacarteAccount;
 
-    public Student(String name, long id, String email){
-        if (!email.endsWith("@uta.edu") && !email.endsWith("@mavs.uta.edu")) {
+    public Student(String name, long id, String email) {
+        if (!email.endsWith("@uta.edu")) {
             throw new IllegalArgumentException("Non-UTA email address: " + email);
         }
 
         this.name = name;
         this.id = id;
         this.email = email;
-        this.account = new Account();
+        this.alacarteAccount = new Alacarte(0);  // Initialize with 0 points
     }
 
-    public String requestMedia(Media media) {
-        return account.play(media); 
+    public void buyPoints(int points) {
+        alacarteAccount.buyPoints(points);
     }
 
-    public int getAccountNumber() {
-        return account.getAccountNumber();
+    public int getPointsRemaining() {
+        return alacarteAccount.getPointsRemaining();
+    }
+
+    public String play(Media media) {
+        return alacarteAccount.play(media);  // Use Alacarte's play method
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
     public String toString() {
-        return String.format("%s (%d, %s, Account #%d)", name, id, email, account.getAccountNumber());
+        return name + " (" + id + ", " + email + ", Account #" + getAccountNumber() + ")";
     }
 }
