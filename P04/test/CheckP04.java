@@ -20,9 +20,9 @@ public class CheckP04{
         moes.addMedia(media2);
 
         // Add Students
-        Alacarte alacarteAccount = new Alacarte(0); 
+        //Alacarte alacarteAccount = new Alacarte(0); 
         Student bigAl = new Student("Al Capone", 1234567891L, "cc7891@uta.edu", false);
-        Unlimited unlimitedAccount = new Unlimited(); 
+        //Unlimited unlimitedAccount = new Unlimited(); 
         Student  iNewton = new Student("I. Newton", 314159265, "in7890@uta.edu", true);
         
         moes.addStudent(bigAl);
@@ -36,8 +36,10 @@ public class CheckP04{
         // List users
         System.out.printf("\nMOES Users:\n");
         for (int i = 0; i < moes.getStudentList().size(); i++) {
-            System.out.println(i + ": " + moes.getStudentList().get(i).toString());
+            Student student = moes.getStudentList().get(i);
+            System.out.printf("%d: %s\n", i, student.toString());
         }
+
 
         // Choose user
         System.out.printf("\nWhich user? ");
