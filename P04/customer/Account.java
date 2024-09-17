@@ -2,7 +2,7 @@ package customer;
 
 import product.Media;
 
-public class Account {
+public abstract class Account {
     private int accountNumber;
     private static int nextAccountNumber = 1;
 
@@ -15,8 +15,6 @@ public class Account {
         return accountNumber;
     }
 
-    public String play(Media media) {
-        return "Playing " + media.toString();
-    }
+    public abstract String play(Media media);
 
 }

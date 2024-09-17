@@ -1,15 +1,15 @@
 package customer;
 
-import customer.Media;
+import product.Media;
 
-public class Alacarte {
+public class Alacarte extends Account {
     private int pointsRemaining;
 
     public Alacarte(int pointsRemaining) {
         this.pointsRemaining = pointsRemaining;
     }
 
-    public int buyPoints (int points){
+    public void buyPoints (int points){
         pointsRemaining += points;
     }
 
@@ -18,14 +18,14 @@ public class Alacarte {
     }
 
     @Override
-    public String play(media Media){
+    public String play(Media media){
         int pointsRequired = 100;
 
-        if(pointsRemaining.equals(pointsRequired) || pointsRemaining > pointsRequired){
+        if(pointsRemaining >= pointsRequired){
             return "Playing " + media.toString();
         }
         else{
-            return "Uh oh, You need more points! This media requires '"+ pointsRequired +". You have '" pointsRemaining" ";
+            return "Uh oh, You need more points! This media requires " + pointsRequired + ". You have " + pointsRemaining + ".";
         }
     }
 }
