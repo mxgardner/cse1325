@@ -6,7 +6,7 @@ import java.net.URL;
 public class Media {
     private String title;
     private String URL;
-    private int points = 0;
+    private int points;
 
     public Media (String title, String URL, int points){
         this.title = title;
@@ -34,6 +34,5 @@ public class Media {
 
     @Override
     public String toString() {
-        return "Media [Title: " + title + ", URL: " + URL + " + Customer Points + '' + points]";
-    }
+        return "Media [Title: " + title + ", URL: " + URL + ", Customer Points: " + points + "]";    }
 }

@@ -38,7 +38,7 @@ public class TestStudent {
         }
 
         try {
-            Media media = new Media("Sample Title", "https://example.com");
+            Media media = new Media("Sample Title", "https://example.com" , 0);
             Student student = new Student("Prof Rice", 1001234567L, "george.rice@uta.edu");
             String expectedPlayResult = "Playing Media [Title: Sample Title, URL: https://example.com]";
             String actualPlayResult = student.requestMedia(media);
