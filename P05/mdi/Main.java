@@ -33,7 +33,7 @@ public class Main{
     }
 
     private void listStudents(){
-        System.out.println(moes.getStudentList);
+        output += moes.getStudentList() + "\n";
     }
 
     private void addMedia(){
