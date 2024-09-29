@@ -11,6 +11,7 @@ public class Main{
     private Menu menu = new Menu();
     private String output = "";
     private Scanner scanner = new Scanner(System.in);
+    private boolean running = true;
 
     private void addStudent(){
         String studentName = Menu.getString(scanner, "\nStudent name? ");
@@ -78,7 +79,7 @@ public class Main{
         }
     }
 
-    public void endapp(boolean running){
+    private void endapp(){
         output += "Exiting the application...\n";
         running = false;
     }
@@ -95,8 +96,6 @@ public class Main{
 
         menu.addMenuItem("Add Student", this::addStudent);
         menu.addMenuItem("List Students", this::listStudents);
-
-        boolean running = true;
 
         while (running) {
             System.out.println("\n===== Menu =====");

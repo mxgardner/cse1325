@@ -28,23 +28,25 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package mdi;
 
 import java.util.Scanner;
-
 public class MenuItem implements Runnable {
-    public MenuItem(Object menuText, Runnable menuResponse) {
+    private String menuText;
+    private Runnable menuResponse;
+
+    public MenuItem(String menuText, Runnable menuResponse) {
         this.menuText = menuText;
         this.menuResponse = menuResponse;
     }
 
-   @Override
+    @Override
     public String toString() {
-        return menuText.toString();
+        return menuText;
     }
+
     @Override
     public void run() {
-        menuResponse.run();
+        menuResponse.run();  // Execute the associated action
     }
-    private Object menuText;        // The text displayed to the user
-    private Runnable menuResponse;  // run() is called on this object when selected
 }
+
 
 

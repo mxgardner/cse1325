@@ -33,10 +33,13 @@ import java.util.ArrayList;
 public class Menu {
     private List<MenuItem> items = new ArrayList<>();
 
-    public void addMenuItem(MenuItem item) {
-        items.add(item);
+    // Allow adding a menu item with text and action (Runnable)
+    public void addMenuItem(String menuText, Runnable menuResponse) {
+        MenuItem item = new MenuItem(menuText, menuResponse);  // Create MenuItem with text and action
+        items.add(item);  // Add to the list of items
     }
 
+    // Static utility methods for getting input from the user
     public static String getString(Scanner scanner, String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
@@ -54,16 +57,23 @@ public class Menu {
         return value;
     }
 
+    // Display the menu to the user
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i=0 ; i<items.size() ; ++i)
-            sb.append(" " + i + "] " + items.get(i) + "\n");
-       return sb.toString();
+        for (int i = 0; i < items.size(); i++) {
+            sb.append(i).append("] ").append(items.get(i)).append("\n");
+        }
+        return sb.toString();
     }
 
+    // Run the selected menu item by number
     public void run(int itemNumber) {
-        items.get(itemNumber).run();
+        if (itemNumber >= 0 && itemNumber < items.size()) {
+            items.get(itemNumber).run();
+        } else {
+            System.out.println("Invalid option. Please try again.");
+        }
     }
 }
 
