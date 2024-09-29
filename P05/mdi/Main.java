@@ -77,6 +77,7 @@ public class Main{
     }
 
     private void listMedia(){
+        System.out.println(Moes.getMediaList);
 
     }
 
