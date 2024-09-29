@@ -68,14 +68,14 @@ public class Main{
 
     private void buyPoints(){
         listStudents();
-
-        System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextInt();
-
-        System.out.printf("\nPoints? ");
-        int points = scanner.nextInt();
-
-        moes.buyPoints(studentIndex, points);
+        int studentIndex = Menu.getInt(scanner, "\nStudent Index? ");
+        int points = Menu.getInt(scanner, "\nPoints to buy? ");
+        if (points > 0) {
+            moes.buyPoints(studentIndex, points);
+            output += "Bought " + points + " points for student " + studentIndex + "\n";
+        } else {
+            output += "Cannot buy negative or zero points.\n";
+        }
     }
 
     public void endapp(boolean running){
