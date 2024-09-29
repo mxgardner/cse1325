@@ -1,8 +1,8 @@
 package mdi;
 
-import moes;
-import customer;
-import product;
+import moes.Moes;
+import customer.Student;
+import product.Media;
 import java.util.Scanner;
 
 public class Main{
@@ -64,7 +64,16 @@ public class Main{
     }
 
     private void playMedia(){
+        listStudents();
 
+        System.out.printf("\nStudent Index? ");
+        int studentIndex = scanner.nextLine();
+
+        listMedia();
+        System.out.printf("\nMedia Number? ");
+        int mediaIndex = scanner.nextLine();
+
+        Moes.playMedia(studentIndex, mediaIndex);
     }
 
     private void listMedia(){
