@@ -35,23 +35,6 @@ public class MenuItem implements Runnable {
         this.menuResponse = menuResponse;
     }
 
-    public static String getString(Scanner scanner, String prompt) {
-        System.out.print(prompt);
-        return scanner.nextLine();
-    }
-
-    public static int getInt(Scanner scanner, String prompt) {
-        System.out.print(prompt);
-        while (!scanner.hasNextInt()) {
-            System.out.println("Please enter a valid number.");
-            System.out.print(prompt);
-            scanner.next(); // Clear invalid input
-        }
-        int value = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline
-        return value;
-    }
-
    @Override
     public String toString() {
         return menuText.toString();

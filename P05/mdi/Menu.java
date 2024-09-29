@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package mdi;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.ArrayList;
 
 // This class manages the entire menu and dispatch table
@@ -34,6 +35,23 @@ public class Menu {
 
     public void addMenuItem(MenuItem item) {
         items.add(item);
+    }
+
+    public static String getString(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine();
+    }
+
+    public static int getInt(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please enter a valid number.");
+            System.out.print(prompt);
+            scanner.next(); // Clear invalid input
+        }
+        int value = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
+        return value;
     }
 
     @Override
