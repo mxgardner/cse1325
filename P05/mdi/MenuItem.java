@@ -25,11 +25,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 // This class manages a single line of the menu with its associated method
-class MenuItem implements Runnable {
+package mdi;
+
+import java.util.Scanner;
+
+public class MenuItem implements Runnable {
     public MenuItem(Object menuText, Runnable menuResponse) {
         this.menuText = menuText;
         this.menuResponse = menuResponse;
     }
+
+    public static String getString(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine();
+    }
+
+    public static int getInt(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please enter a valid number.");
+            System.out.print(prompt);
+            scanner.next(); // Clear invalid input
+        }
+        int value = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
+        return value;
+    }
+
    @Override
     public String toString() {
         return menuText.toString();

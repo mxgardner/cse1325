@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 // This class manages the entire menu and dispatch table
-class Menu {
+public class Menu {
     private List<MenuItem> items = new ArrayList<>();
 
     public void addMenuItem(MenuItem item) {
