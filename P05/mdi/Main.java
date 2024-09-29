@@ -87,6 +87,15 @@ public class Main{
     }
 
     private void buyPoints(){
+        listStudents();
+
+        System.out.printf("\nStudent Index? ");
+        int studentIndex = scanner.nextLine();
+
+        System.out.printf("\nPoints? ");
+        int points = scanner.nextLine();
+
+        Moes.buyPoints(studentIndex, points);
 
     }
 
