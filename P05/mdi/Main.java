@@ -81,8 +81,12 @@ public class Main{
     }
 
     private void listAvailablePoints(){
-        int availablePoints = Moes.getPoints;
+        listStudents();
 
+        System.out.printf("\nStudent Index? ");
+        int studentIndex = scanner.nextLine();
+
+        int availablePoints = Moes.getPoints(studentIndex);
         System.out.println("Available points: " + availablePoints);
     }
 
@@ -96,7 +100,6 @@ public class Main{
         int points = scanner.nextLine();
 
         Moes.buyPoints(studentIndex, points);
-
     }
 
     public Main {
