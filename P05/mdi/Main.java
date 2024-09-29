@@ -6,6 +6,10 @@ import product.Media;
 import java.util.Scanner;
 
 public class Main{
+
+    private Moes moes = new Moes;
+    Scanner scanner = new Scanner(System.in);
+
     private void addStudent(){
         System.out.printf("\nStudent name? ");
         String studentName = scanner.nextLine();
@@ -95,47 +99,42 @@ public class Main{
         Moes.buyPoints(studentIndex, points);
     }
 
-    public Main {
-        private Moes moes = new Moes;
-        private String output;
-        private boolean running;
-        Scanner scanner = new Scanner(System.in);
-        public static void main(String args[]){
-
-        }
-
-        public void mdi(){
-            private Menu menu = new Menu();
-
-            menu.addMenuItem("Exit", this::endapp);
-
-            menu.addMenuItem("Play Media", this::playMedia);
-            menu.addMenuItem("List Media", this::listMedia);
-            menu.addMenuItem("List Available Points", this::listAvailablePoints);
-            menu.addMenuItem("Buy Points", this::buyPoints);
-            menu.addMenuItem("Add Media", this::addMedia);
-
-
-            menu.addMenuItem("Add Student", this::addStudent);
-            menu.addMenuItem("List Students", this::listStudents);
-
-            boolean running = true;
-
-            while (running) {
-                System.out.println("\n===== Menu =====");
-                System.out.print(menu);
-    
-                System.out.print("Choose an option: ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-    
-                menu.run(choice);
-            }
-
-        }
-
-        public void endapp(boolean running){
-            running = false;
-        }
+    public void endapp(boolean running){
+        running = false;
     }
+
+    public void mdi(){
+        private Menu menu = new Menu();
+
+        menu.addMenuItem("Exit", this::endapp);
+
+        menu.addMenuItem("Play Media", this::playMedia);
+        menu.addMenuItem("List Media", this::listMedia);
+        menu.addMenuItem("List Available Points", this::listAvailablePoints);
+        menu.addMenuItem("Buy Points", this::buyPoints);
+        menu.addMenuItem("Add Media", this::addMedia);
+
+
+        menu.addMenuItem("Add Student", this::addStudent);
+        menu.addMenuItem("List Students", this::listStudents);
+
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n===== Menu =====");
+            System.out.print(menu);
+    
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+    
+            menu.run(choice);
+        }
+
+    }
+
+    public static void main(String args[]){
+
+    }
+    
 }
