@@ -48,6 +48,18 @@ public class Main{
     }
 
     private void addMedia(){
+        System.out.printf("\nTitle? ");
+        String mediaTitle = scanner.nextLine();
+
+        System.out.printf("\nURL? ");
+        String mediaURL = scanner.nextLine();
+
+        System.out.printf("\nPoints? ");
+        int mediaPoints = scanner.nextLine();
+
+        Media media = new Media(mediaTitle, output, mediaPoints);
+
+        Moes.addMedia(Media media);
 
     }
 
