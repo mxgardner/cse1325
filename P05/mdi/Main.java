@@ -52,9 +52,9 @@ public class Main{
         String mediaURL = scanner.nextLine();
 
         System.out.printf("\nPoints? ");
-        int mediaPoints = scanner.nextLine();
+        int mediaPoints = scanner.nextInt();
 
-        Media media = new Media(mediaTitle, output, mediaPoints);
+        Media media = new Media(mediaTitle, mediaURL, mediaPoints);
 
         moes.addMedia(media);
 
@@ -70,7 +70,7 @@ public class Main{
         System.out.printf("\nMedia Number? ");
         int mediaIndex = scanner.nextInt();
 
-        Moes.playMedia(studentIndex, mediaIndex);
+        moes.playMedia(studentIndex, mediaIndex);
     }
 
     private void listMedia(){
@@ -83,7 +83,7 @@ public class Main{
         System.out.printf("\nStudent Index? ");
         int studentIndex = scanner.nextInt();
 
-        int availablePoints = Moes.getPoints(studentIndex);
+        int availablePoints = moes.getPoints(studentIndex);
         System.out.println("Available points: " + availablePoints);
     }
 
@@ -96,7 +96,7 @@ public class Main{
         System.out.printf("\nPoints? ");
         int points = scanner.nextInt();
 
-        Moes.buyPoints(studentIndex, points);
+        moes.buyPoints(studentIndex, points);
     }
 
     public void endapp(boolean running){
@@ -126,7 +126,7 @@ public class Main{
     
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextInt();
     
             menu.run(choice);
         }
