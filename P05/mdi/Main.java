@@ -37,19 +37,13 @@ public class Main{
     }
 
     private void addMedia(){
-        System.out.printf("\nTitle? ");
-        String mediaTitle = scanner.nextLine();
-
-        System.out.printf("\nURL? ");
-        String mediaURL = scanner.nextLine();
-
-        System.out.printf("\nPoints? ");
-        int mediaPoints = scanner.nextInt();
+        String mediaTitle = Menu.getString(scanner, "\nTitle? ");
+        String mediaURL = Menu.getString(scanner, "\nURL? ");
+        int mediaPoints = Menu.getInt(scanner, "\nPoints? ");
 
         Media media = new Media(mediaTitle, mediaURL, mediaPoints);
-
         moes.addMedia(media);
-
+        output += "Media added: " + mediaTitle + "\n";
     }
 
     private void playMedia(){
