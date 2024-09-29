@@ -78,11 +78,12 @@ public class Main{
 
     private void listMedia(){
         System.out.println(Moes.getMediaList);
-
     }
 
     private void listAvailablePoints(){
+        int availablePoints = Moes.getPoints;
 
+        System.out.println("Available points: " + availablePoints);
     }
 
     private void buyPoints(){
