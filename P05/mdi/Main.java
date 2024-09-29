@@ -60,7 +60,7 @@ public class Main{
     }
 
     private void listMedia(){
-        System.out.println(moes.getMediaList);
+        output += moes.getMediaList() + "\n";
     }
 
     private void listAvailablePoints(){
