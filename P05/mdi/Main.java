@@ -8,35 +8,27 @@ import java.util.Scanner;
 public class Main{
 
     private Moes moes = new Moes();
-    Scanner scanner = new Scanner(System.in);
+    private Menu menu = new Menu();
+    private String output = "";
+    private Scanner scanner = new Scanner(System.in);
 
     private void addStudent(){
-        System.out.printf("\nStudent name? ");
-        String studentName = scanner.nextLine();
-
-        System.out.printf("\nStudent ID? ");
-        long studentID = scanner.nextLong();
-
-        System.out.printf("\nStudent email? ");
-        String studentEmail = scanner.nextLine();
-
-        System.out.printf("\n(a)lacarte or (u)nlimited ");
-        String studentAccountType = scanner.nextLine();
-
+        String studentName = Menu.getString(scanner, "\nStudent name? ");
+        long studentID = Menu.getInt(scanner, "\nStudent ID? ");
+        String studentEmail = Menu.getString(scanner, "\nStudent email? ");
+        String accountType = Menu.getString(scanner, "\n(a)lacarte or (u)nlimited ");
+        
         boolean studentUnlimited = false;
-        if(studentAccountType.equals("u")){
+        if (accountType.equals("u")) {
             studentUnlimited = true;
-        }
-        else if(studentAccountType.equals("a")){
-            studentUnlimited = false;
-        }
-        else{
-            System.err.println("Invalid Account Type");
+        } else if (!accountType.equals("a")) {
+            output += "Invalid account type.\n";
+            return;
         }
 
         Student student = new Student(studentName, studentID, studentEmail, studentUnlimited);
-
         moes.addStudent(student);
+        output += "Student added: " + studentName + "\n";
 
     }
 
