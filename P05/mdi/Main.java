@@ -48,15 +48,11 @@ public class Main{
 
     private void playMedia(){
         listStudents();
-
-        System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextInt();
-
+        int studentIndex = Menu.getInt(scanner, "\nStudent Index? ");
         listMedia();
-        System.out.printf("\nMedia Number? ");
-        int mediaIndex = scanner.nextInt();
-
+        int mediaIndex = Menu.getInt(scanner, "\nMedia Number? ");
         moes.playMedia(studentIndex, mediaIndex);
+        output += "Media played for student " + studentIndex + "\n";
     }
 
     private void listMedia(){
