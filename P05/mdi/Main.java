@@ -79,12 +79,11 @@ public class Main{
     }
 
     public void endapp(boolean running){
+        output += "Exiting the application...\n";
         running = false;
     }
 
     public void mdi(){
-        Menu menu = new Menu();
-
         menu.addMenuItem("Exit", this::endapp);
 
         menu.addMenuItem("Play Media", this::playMedia);
@@ -103,10 +102,7 @@ public class Main{
             System.out.println("\n===== Menu =====");
             System.out.print(menu);
     
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextInt();
-    
+            int choice = Menu.getInt(scanner, "Choose an option: ");
             menu.run(choice);
         }
 
