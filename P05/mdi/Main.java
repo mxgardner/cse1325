@@ -61,12 +61,9 @@ public class Main{
 
     private void listAvailablePoints(){
         listStudents();
-
-        System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextInt();
-
+        int studentIndex = Menu.getInt(scanner, "\nStudent Index? ");
         int availablePoints = moes.getPoints(studentIndex);
-        System.out.println("Available points: " + availablePoints);
+        output += "Available points for student " + studentIndex + ": " + availablePoints + "\n";
     }
 
     private void buyPoints(){
