@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main{
 
-    private Moes moes = new Moes;
+    private Moes moes = new Moes();
     Scanner scanner = new Scanner(System.in);
 
     private void addStudent(){
@@ -15,7 +15,7 @@ public class Main{
         String studentName = scanner.nextLine();
 
         System.out.printf("\nStudent ID? ");
-        long studentID = scanner.nextLine();
+        long studentID = scanner.nextLong();
 
         System.out.printf("\nStudent email? ");
         String studentEmail = scanner.nextLine();
@@ -34,14 +34,14 @@ public class Main{
             System.err.println("Invalid Account Type");
         }
 
-        Student student = new Student(studentName, studentID, studentEmail, studentAccountType);
+        Student student = new Student(studentName, studentID, studentEmail, studentUnlimited);
 
-        Moes.addStudent(Student student);
+        moes.addStudent(student);
 
     }
 
     private void listStudents(){
-        System.out.println(Moes.getStudentList);
+        System.out.println(moes.getStudentList);
     }
 
     private void addMedia(){
@@ -56,7 +56,7 @@ public class Main{
 
         Media media = new Media(mediaTitle, output, mediaPoints);
 
-        Moes.addMedia(Media media);
+        moes.addMedia(media);
 
     }
 
@@ -64,24 +64,24 @@ public class Main{
         listStudents();
 
         System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextLine();
+        int studentIndex = scanner.nextInt();
 
         listMedia();
         System.out.printf("\nMedia Number? ");
-        int mediaIndex = scanner.nextLine();
+        int mediaIndex = scanner.nextInt();
 
         Moes.playMedia(studentIndex, mediaIndex);
     }
 
     private void listMedia(){
-        System.out.println(Moes.getMediaList);
+        System.out.println(moes.getMediaList);
     }
 
     private void listAvailablePoints(){
         listStudents();
 
         System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextLine();
+        int studentIndex = scanner.nextInt();
 
         int availablePoints = Moes.getPoints(studentIndex);
         System.out.println("Available points: " + availablePoints);
@@ -91,10 +91,10 @@ public class Main{
         listStudents();
 
         System.out.printf("\nStudent Index? ");
-        int studentIndex = scanner.nextLine();
+        int studentIndex = scanner.nextInt();
 
         System.out.printf("\nPoints? ");
-        int points = scanner.nextLine();
+        int points = scanner.nextInt();
 
         Moes.buyPoints(studentIndex, points);
     }
@@ -104,7 +104,7 @@ public class Main{
     }
 
     public void mdi(){
-        private Menu menu = new Menu();
+        Menu menu = new Menu();
 
         menu.addMenuItem("Exit", this::endapp);
 
@@ -136,7 +136,6 @@ public class Main{
     public static void main(String args[]){
         Main app = new Main();
         app.mdi();
-
     }
     
 }
