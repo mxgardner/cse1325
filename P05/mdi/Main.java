@@ -43,8 +43,8 @@ public class Main{
 
     }
 
-    private void listStudents(Student students){
-
+    private void listStudents(){
+        System.out.println(Moes.getStudentList);
     }
 
     private void addMedia(){
