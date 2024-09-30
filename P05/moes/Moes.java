@@ -9,40 +9,23 @@ import customer.Account;
 
 public class Moes{
     private ArrayList<Media> library = new ArrayList<>(); 
-    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Student> customers = new ArrayList<>();
 
     public void addMedia(Media media) {
         library.add(media);
     }
 
     public void addStudent(Student student) {
-        students.add(student);
+        customers.add(student);
     }
     
-    public String getMediaList() {
-        if (mediaList.isEmpty()) {
-            return "No media available.";
-        }
-
-        StringBuilder mediaListStr = new StringBuilder("Media List:\n");
-        for (int i = 0; i < mediaList.size(); i++) {
-            mediaListStr.append(i).append(": ").append(mediaList.get(i)).append("\n");
-        }
-        return mediaListStr.toString();
+    public ArrayList<Media> getMediaList() {
+        return library;
     }
-}
 
-    public String getStudentList() {
-        if (students.isEmpty()) {
-            return "No students available.";
-        }
-
-        StringBuilder studentList = new StringBuilder("Student List:\n");
-        for (int i = 0; i < students.size(); i++) {
-            studentList.append(i).append(": ").append(students.get(i)).append("\n");
-        }
-        return studentList.toString();
-    }
+    public ArrayList<Student> getStudentList() {
+        return customers;
+    }  
 
     public int getPoints(int studentIndex) {
         Student student = customers.get(studentIndex); 

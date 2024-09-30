@@ -11,7 +11,7 @@ public class Student {
     private Account account;
 
     public Student(String name, long id, String email, boolean unlimited) {
-        if (!email.endsWith("@uta.edu" || !email.endsWith("@mavs.uta.edu"))) {
+        if (!email.endsWith("@uta.edu")) {
             throw new IllegalArgumentException("Non-UTA email address: " + email);
         }
 

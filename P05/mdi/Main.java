@@ -3,6 +3,8 @@ package mdi;
 import moes.Moes;
 import customer.Student;
 import product.Media;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
@@ -31,11 +33,25 @@ public class Main{
         moes.addStudent(student);
         output += "Student added: " + studentName + "\n";
 
+        System.out.println(output);
+        output = "";
     }
 
-    private void listStudents(){
-        output += moes.getStudentList() + "\n";
+    private void listStudents() {
+    ArrayList<Student> students = moes.getStudentList();
+    if (students.isEmpty()) {
+        output += "No students available.\n";
+    } else {
+        output += "Student List:\n";
+        for (int i = 0; i < students.size(); i++) {
+            output += i + ": " + students.get(i).toString() + "\n";
+        }
     }
+
+    System.out.println(output);
+    output = "";
+}
+
 
     private void addMedia(){
         String mediaTitle = Menu.getString(scanner, "\nTitle? ");
@@ -45,6 +61,9 @@ public class Main{
         Media media = new Media(mediaTitle, mediaURL, mediaPoints);
         moes.addMedia(media);
         output += "Media added: " + mediaTitle + "\n";
+
+        System.out.println(output);
+        output = "";
     }
 
     private void playMedia(){
@@ -54,10 +73,24 @@ public class Main{
         int mediaIndex = Menu.getInt(scanner, "\nMedia Number? ");
         moes.playMedia(studentIndex, mediaIndex);
         output += "Media played for student " + studentIndex + "\n";
+
+        System.out.println(output);
+        output = "";
     }
 
-    private void listMedia(){
-        output += moes.getMediaList() + "\n";
+    private void listMedia() {
+        ArrayList<Media> mediaList = moes.getMediaList();
+        if (mediaList.isEmpty()) {
+            output += "No media available.\n";
+        } else {
+            output += "Media List:\n";
+            for (int i = 0; i < mediaList.size(); i++) {
+                output += i + ": " + mediaList.get(i).toString() + "\n";
+            }
+        }
+
+        System.out.println(output);
+        output = "";
     }
 
     private void listAvailablePoints(){
@@ -65,6 +98,9 @@ public class Main{
         int studentIndex = Menu.getInt(scanner, "\nStudent Index? ");
         int availablePoints = moes.getPoints(studentIndex);
         output += "Available points for student " + studentIndex + ": " + availablePoints + "\n";
+
+        System.out.println(output);
+        output = "";
     }
 
     private void buyPoints(){
@@ -77,10 +113,16 @@ public class Main{
         } else {
             output += "Cannot buy negative or zero points.\n";
         }
+
+        System.out.println(output);
+        output = "";
     }
 
     private void endapp(){
         output += "Exiting the application...\n";
+        System.out.println(output);
+        output = "";
+
         running = false;
     }
 
