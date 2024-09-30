@@ -61,9 +61,33 @@ public class Menu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < items.size(); i++) {
-            sb.append(i).append("] ").append(items.get(i)).append("\n");
-        }
+        
+        // Group 1: Media Management
+        sb.append(
+                    "~~~~~~~~~~~~~~~~~~\n" + 
+                    "|| Manage Media ||\n" + //
+                    "~~~~~~~~~~~~~~~~~~\n");
+        sb.append("1] Play Media\n");
+        sb.append("2] List Media\n");
+        sb.append("5] Add Media\n\n");
+
+        // Group 2: Student Management
+        sb.append(
+        "~~~~~~~~~~~~~~~~~~~~~\n" + 
+        "|| Manage Students ||\n" + //
+        "~~~~~~~~~~~~~~~~~~~~~\n");
+        sb.append("3] List Available Points\n");
+        sb.append("4] Buy Points\n");
+        sb.append("6] Add Student\n");
+        sb.append("7] List Students\n\n");
+
+        // Group 3: Exit
+        sb.append(
+        "~~~~~~~~~~\n" + 
+        "|| Exit ||\n" + //
+        "~~~~~~~~~~\n");
+        sb.append("0] Exit\n\n");
+
         return sb.toString();
     }
 

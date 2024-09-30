@@ -2,6 +2,7 @@ package mdi;
 
 import moes.Moes;
 import customer.Student;
+import mdi.PrettyPrintMenu;
 import product.Media;
 
 import java.util.ArrayList;
@@ -119,7 +120,26 @@ public class Main{
     }
 
     private void endapp(){
-        output += "Exiting the application...\n";
+        output += "Exiting the application...\n\n\n";
+        System.out.println(output);
+        output = "";
+
+        output += " ,~~_\n";
+        output += " |/\\ =_ _ ~\n";
+        output += " _( )_( )\\~~\\\n";
+        output += " \\,\\  _|\\ \\~~~\\\n";
+        output += " \\`   \\\\\n";
+        output += " `    ` \n";
+
+        System.out.println(output);
+        output = "";
+
+        try {
+            Thread.sleep(3000); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        output += "\n    Mav out!\n";
         System.out.println(output);
         output = "";
 
@@ -128,21 +148,18 @@ public class Main{
 
     public void mdi(){
         menu.addMenuItem("Exit", this::endapp);
-
         menu.addMenuItem("Play Media", this::playMedia);
         menu.addMenuItem("List Media", this::listMedia);
         menu.addMenuItem("List Available Points", this::listAvailablePoints);
         menu.addMenuItem("Buy Points", this::buyPoints);
         menu.addMenuItem("Add Media", this::addMedia);
-
-
         menu.addMenuItem("Add Student", this::addStudent);
         menu.addMenuItem("List Students", this::listStudents);
 
+        new PrettyPrintMenu();
+        System.out.print(menu);
+
         while (running) {
-            System.out.println("\n===== Menu =====");
-            System.out.print(menu);
-    
             int choice = Menu.getInt(scanner, "Choose an option: ");
             menu.run(choice);
         }
