@@ -96,17 +96,28 @@ public class Boggle {
             // =========== CHANGE THIS BLOCK OF CODE TO ADD THREADING ===========
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
             ArrayList<Thread> threads = new ArrayList<>();
-
+            int boardsPerThread = numberOfBoards / numThreads;
+            int remainingBoards = numberOfBoards % numThreads;
+            
             for (int threadNumber = 0; threadNumber < numThreads; threadNumber++) {
-                final int first = threadNumber * (numberOfBoards / numThreads);
-                final int lastPlusOne = (threadNumber == numThreads - 1) ? numberOfBoards : first + (numberOfBoards / numThreads);
+                // Calculate first and lastPlusOne, ensuring valid ranges
+                final int first = threadNumber * boardsPerThread + Math.min(threadNumber, remainingBoards);
+                final int lastPlusOne = first + boardsPerThread + (threadNumber < remainingBoards ? 1 : 0);
+            
+                // Skip threads with no work
+                if (first >= numberOfBoards) {
+                    System.out.println("Thread " + threadNumber + " has no boards to process.");
+                    continue;  // Skip this thread if it has no boards to process
+                }
+            
+                // Create a thread to handle the range of boards
                 final int currentThreadNumber = threadNumber;
-                
-                Thread thread = new Thread(() -> solveRange(first, lastPlusOne, currentThreadNumber)); 
+                Thread thread = new Thread(() -> solveRange(first, lastPlusOne, currentThreadNumber));
                 threads.add(thread);
                 thread.start();
             }
-
+            
+            // Join all threads
             for (Thread thread : threads) {
                 try {
                     thread.join();
