@@ -1,12 +1,26 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 public class Media {
     private String title;
     private String URL;
 
     public Media (String title, String URL){
         this.title = title;
-        this.URL = URL;
 
-        // TODO: Add data validation
+        if (!isValidURL(URL)) {
+            throw new RuntimeException("Invalid URL: " + URL);
+        }
+
+        this.URL = URL;
+    }
+
+    private boolean isValidURL(String url) {
+        try {
+            new URL(url);  
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
     @Override
