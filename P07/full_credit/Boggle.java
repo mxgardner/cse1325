@@ -24,37 +24,25 @@ public class Boggle {
     
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
     private static void solveRange(int first, int lastPlusOne, int threadNumber) {
-        private ArrayList<Board> boards;
-        private ArrayList<String> words;
-        private Set<Solution> solutions;
-
-        public void solveRange(int first, int lastPlusOne, int threadId) {
-            for (int i = first; i < lastPlusOne; i++) {
-                Board board;
-                synchronized (boards) {
-                    board = boards.get(i);
-                }
-
-                Solver solver = new Solver(board);
-
-                for (String word : words) {
-                    Solution solution = solver.solve(word);
-
-                    if (solution != null) {
-                        synchronized (solutions) {
-                            solutions.add(solution);
-                        }
+        for (int i = first; i < lastPlusOne; i++) {
+            Board board;
+            synchronized (boards) {
+                board = boards.get(i);
+            }
+    
+            Solver solver = new Solver(board, threadNumber, verbosity);
+    
+            for (String word : words) {
+                Solution solution = solver.solve(word);
+    
+                if (solution != null) {
+                    synchronized (solutions) {  
+                        solutions.add(solution);
                     }
                 }
             }
-            log("Thread " + threadId + " finished solving boards from " + first + " to " + (lastPlusOne - 1), 1);
         }
-
-        private void log(String message, int level) {
-            if (verbosity >= level) {
-                System.out.println(message);
-            }
-        }
+        log("Thread " + threadNumber + " finished solving boards from " + first + " to " + (lastPlusOne - 1), 1);
     }
     // =========== END THREAD METHOD ===========
 
@@ -107,12 +95,23 @@ public class Boggle {
             
             // =========== CHANGE THIS BLOCK OF CODE TO ADD THREADING ===========
             // Find words on the Boggle boards, collecting the solutions in a TreeSet
-            int threadNumber = 0; // This will be set to a unique int for each of your threads
-            for(Board board : boards) {
-                Solver solver = new Solver(board, threadNumber, verbosity);
-                for(String word : words) {
-                    Solution solution = solver.solve(word);
-                    if(solution != null) solutions.add(solution);
+            ArrayList<Thread> threads = new ArrayList<>();
+
+            for (int threadNumber = 0; threadNumber < numThreads; threadNumber++) {
+                final int first = threadNumber * (numberOfBoards / numThreads);
+                final int lastPlusOne = (threadNumber == numThreads - 1) ? numberOfBoards : first + (numberOfBoards / numThreads);
+                final int currentThreadNumber = threadNumber;
+                
+                Thread thread = new Thread(() -> solveRange(first, lastPlusOne, currentThreadNumber)); 
+                threads.add(thread);
+                thread.start();
+            }
+
+            for (Thread thread : threads) {
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             // =========== END BLOCK OF CODE TO ADD THREADING ===========
