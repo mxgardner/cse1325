@@ -2,6 +2,8 @@
 #define CLOCK_H
 
 #include <iostream>
+#include <stdexcept>
+#include <iomanip>
 
 class Clock {
 protected:
