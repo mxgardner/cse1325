@@ -11,3 +11,13 @@ void Clock::print() const {
               << std::setw(2) << std::setfill('0') << _minutes << ":"
               << std::setw(2) << std::setfill('0') << _seconds << std::endl;
 }
+
+void Clock::tic() {
+    if (++_seconds == 60) {
+        _seconds = 0;
+        if (++_minutes == 60) {
+            _minutes = 0;
+            _hours = (_hours + 1) % 24;
+        }
+    }
+}
