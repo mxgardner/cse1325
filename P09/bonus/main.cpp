@@ -1,3 +1,9 @@
+#include "timer.h"         
+#include <iostream>       
+#include <stdexcept>      
+#include <string>         
+#include <cstdlib>         
+
 int main(int argc, char* argv[]) {
     if (argc != 4) {
         std::cerr << "usage: clock <hour> <minutes> <seconds>" << std::endl;
@@ -8,7 +14,7 @@ int main(int argc, char* argv[]) {
         int hours = std::stoi(argv[1]);
         int minutes = std::stoi(argv[2]);
         int seconds = std::stoi(argv[3]);
-        Timer timer(hours, minutes, seconds);
+        Timer timer(hours, minutes, seconds); 
 
         std::string input;
         while (true) {
