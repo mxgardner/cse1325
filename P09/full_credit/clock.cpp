@@ -5,3 +5,9 @@ Clock::Clock(int hours, int minutes, int seconds) : _hours(hours), _minutes(minu
         throw std::out_of_range("Invalid time: " + std::to_string(hours) + ":" + std::to_string(minutes) + ":" + std::to_string(seconds));
     }
 }
+
+void Clock::print() const {
+    std::cout << std::setw(2) << std::setfill('0') << _hours << ":"
+              << std::setw(2) << std::setfill('0') << _minutes << ":"
+              << std::setw(2) << std::setfill('0') << _seconds << std::endl;
+}
