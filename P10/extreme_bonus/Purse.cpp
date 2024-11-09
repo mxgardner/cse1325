@@ -16,8 +16,9 @@ std::ostream& operator<<(std::ostream& os, const Purse& purse) {
 
 std::istream& operator>>(std::istream& is, Purse& purse) {
     std::string line;
-    std::getline(is, line);
+    std::getline(is, line); // Read the entire line
 
+    // Regular expression to match input format "£pounds shillings s pence d"
     std::regex pattern(R"(£\s*(\d+)\s+(\d+)s\s*(\d+)d)");
     std::smatch matches;
 
@@ -27,10 +28,17 @@ std::istream& operator>>(std::istream& is, Purse& purse) {
         purse._pence = std::stoi(matches[3].str());
         purse.rationalize();
     } else {
-        is.setstate(std::ios::failbit);
+        is.setstate(std::ios::failbit); // Set failbit if the input does not match the pattern
     }
 
     return is;
+}
+
+int Purse::operator[](const std::string& unit) const {
+    if (unit == pound_utf8) return _pounds;
+    if (unit == "s") return _shillings;
+    if (unit == "d") return _pence;
+    throw std::invalid_argument("Invalid unit");
 }
 
 Purse& Purse::operator++() {
@@ -67,11 +75,4 @@ Purse& Purse::operator-=(const Purse& other) {
     _pence -= other._pence;
     rationalize();
     return *this;
-}
-
-int Purse::operator[](const std::string& unit) const {
-    if (unit == pound_utf8) return _pounds;
-    if (unit == "s") return _shillings;
-    if (unit == "d") return _pence;
-    throw std::invalid_argument("Invalid unit");
 }

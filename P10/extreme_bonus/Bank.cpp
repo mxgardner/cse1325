@@ -22,11 +22,18 @@ int main() {
 
     Purse total;
     for (const auto& [name, purse] : vault) {
-        std::cout << name << ": " << purse << "\n";
+        std::cout << name << ": " 
+                  << "£" << purse["£"] << " " 
+                  << purse["s"] << "s " 
+                  << purse["d"] << "d\n";
         total += purse;
     }
 
-    std::cout << "Total amount in the bank: " << total << "\n";
+    std::cout << "Total amount in the bank: "
+              << "£" << total["£"] << " "
+              << total["s"] << "s "
+              << total["d"] << "d\n";
     
     return 0;
 }
+
