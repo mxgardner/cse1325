@@ -1,6 +1,6 @@
 #include "Purse.h"
 
-const std::string Purse::pound_utf8 = u8"£"; // Define the pound symbol as a UTF-8 encoded string
+const std::string Purse::pound_utf8 = "£";
 
 void Purse::rationalize() {
     if (_pence >= 12) { _shillings += _pence / 12; _pence %= 12; }
