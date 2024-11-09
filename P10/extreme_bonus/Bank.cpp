@@ -15,8 +15,8 @@ int main() {
         std::cout << "Enter account name: ";
         std::cin.ignore();
         std::getline(std::cin, name);
-        std::cout << "Enter initial deposit (format: £pounds shillings s pence d): ";
-        std::cin >> purse; 
+        std::cout << "Enter initial deposit (format: £ pounds shillings s pence d): ";
+        std::cin >> purse;
         vault[name] = purse;
     }
 
@@ -25,6 +25,8 @@ int main() {
         std::cout << name << ": " << purse << "\n";
         total += purse;
     }
+
     std::cout << "Total amount in the bank: " << total << "\n";
+    
     return 0;
 }

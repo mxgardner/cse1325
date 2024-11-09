@@ -28,3 +28,4 @@ public:
 };
 
 #endif // PURSE_H
+

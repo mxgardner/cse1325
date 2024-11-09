@@ -1,4 +1,6 @@
 #include "Purse.h"
+#include <regex>
+#include <string>
 
 const std::string Purse::pound_utf8 = "£";
 
@@ -13,11 +15,21 @@ std::ostream& operator<<(std::ostream& os, const Purse& purse) {
 }
 
 std::istream& operator>>(std::istream& is, Purse& purse) {
-    char s, d;
-    std::string pound_symbol;
-    is >> pound_symbol >> purse._pounds >> purse._shillings >> s >> purse._pence >> d;
-    if (pound_symbol != Purse::pound_utf8) is.setstate(std::ios::failbit); // Validate pound symbol
-    purse.rationalize();
+    std::string line;
+    std::getline(is, line);
+
+    std::regex pattern(R"(£\s*(\d+)\s+(\d+)s\s*(\d+)d)");
+    std::smatch matches;
+
+    if (std::regex_match(line, matches, pattern)) {
+        purse._pounds = std::stoi(matches[1].str());
+        purse._shillings = std::stoi(matches[2].str());
+        purse._pence = std::stoi(matches[3].str());
+        purse.rationalize();
+    } else {
+        is.setstate(std::ios::failbit);
+    }
+
     return is;
 }
 
